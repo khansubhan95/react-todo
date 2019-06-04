@@ -1,57 +1,9 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 
-class TodoForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.todoFormSubmit =this.todoFormSubmit.bind(this)
-    this.state = {
-      todoItem: ''
-    }
-  }
+import TodoForm from './TodoForm'
+import TodoList from './TodoList'
 
-  todoFormSubmit(event) {
-    event.preventDefault()
-      let val = event.target.elements.todoItem.value
-      if (val === '') {
-        return
-      }
-      this.setState({todoItem: val})
-      this.props.sendData(val)
-      event.target.elements.todoItem.value = ''
-  }
-
-  render() {
-    return(
-      <form onSubmit={this.todoFormSubmit}>
-        <label>
-          Todo:<input type="text" name="todoItem" />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-    )
-  }
-}
-
-class TodoList extends React.Component {
-
-  createItems(data) {
-    return data.map((item, index) => {
-      return (
-        <li key={index}>{item} <button type="button" onClick={() => this.props.deleteItem(index)}>Delete</button></li>
-      )
-    })
-  }
-
-  render() {
-    let items = this.createItems(this.props.todoItems)
-    return(
-      <ul>
-        {items}
-      </ul>
-    )
-  }
-}
+import './index.css'
 
 class App extends React.Component {
   constructor(props) {
@@ -69,7 +21,7 @@ class App extends React.Component {
   }
 
   deleteItem(index) {
-    console.log(index)
+    // console.log(index)
     let newArray = this.state.todoItems.filter((item, i) => {
       return i !== index
     })
