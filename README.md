@@ -2,7 +2,7 @@
 
 A todo app made using react. 
 
-## Instructions
+### Instructions
 
 * Clone the repo
 * cd into the repo and run `npm install`
